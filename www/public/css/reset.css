@@ -1,0 +1,458 @@
+/* FONT */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap');
+
+/* RESET */
+html,
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-family: "Raleway", sans-serif!important;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+main {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-decoration: none;
+}
+
+form,
+label,
+article,
+aside,
+details,
+figcaption,
+main,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+div,
+a {
+  display: flex;
+  flex-direction: column;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  line-height: 2;
+}
+
+/* CHECKBOX */
+.checkbox{
+  color: #909090;
+  cursor: pointer;
+  transition: .2s all;
+}
+
+.checkbox.checked i{
+  color: rgb(0, 140, 255)!important;
+}
+
+.checkbox i{
+  animation: checkbox-in .3s ease;
+}
+
+.checkbox input{
+  display: none;
+}
+
+.checkbox.hidden{
+  opacity: 0;
+}
+
+.checkbox.hidden.animation{
+  animation: checkbox-out .3s ease;
+}
+
+/* MODALS */
+.no-scroll{
+  overflow: hidden!important;
+}
+
+/* INPUTS */
+
+/* input-group */
+.input-group{
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.input-group input, .input-group textarea{
+  width: 100%;
+  font-family: "Raleway";
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid #eeeeee;
+  outline: none;
+  padding: 20px 25px;
+  margin: 5px 0;
+  transition: .3s all;
+}
+
+.input-group input:focus, .input-group textarea:focus{
+  border-bottom-color: #d89339;
+}
+
+.input-group input::placeholder, .input-group textarea::placeholder{
+  color: #909090;
+  font-family: "Raleway";
+  font-size: 1rem;
+}
+
+.filtro .pesquisa .input-group i{
+  cursor: pointer;
+}
+
+i.focus{
+  color: #d89339!important;
+}
+
+/* file */
+.input-group.file input{
+  display: none;
+}
+
+.input-group.file .file-input{
+  width: 400px;
+  height: 40px;
+  color: #909090;
+  border-bottom: 2px solid #eeeeee;
+  padding-left: 25px;
+  margin-right: 25px;
+}
+
+
+.input-group.file i{
+  font-size: 20px;
+}
+
+/* multiple */
+.input-group.multiple input{
+  margin-right: 50px;
+}
+
+.input-group.multiple input:last-child{
+  margin-right: 0;
+}
+
+/* BTNS */
+.btn-primary{
+  color: #ffffff;
+  font-family: "Raleway";
+  font-size: 1rem;
+  font-weight: 400;
+  background: #d89339;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  user-select: none;
+  padding: 7px 25px;
+}
+
+.btn-default{
+  color: #909090;
+  cursor: pointer;
+  user-select: none;
+  padding: 7px 25px;
+}
+
+.btn-danger{
+  color: #ffffff;
+  font-family: "Raleway";
+  font-size: 1rem;
+  font-weight: 400;
+  background: #aa2222;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  user-select: none;
+  padding: 7px 25px;
+}
+
+/* LOADING */
+.container-loading{
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+
+  z-index: 2;
+}
+
+.loading {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.loading div {
+  animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+
+.loading div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #909090;
+  margin: -4px 0 0 -4px;
+}
+.loading div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.loading div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.loading div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.loading div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.loading div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.loading div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.loading div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.loading div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.loading div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.loading div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.loading div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.loading div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.loading div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.loading div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.loading div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.loading div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+
+/* ALERT */
+.alert{
+  position: fixed;
+  top: 50px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  font-size: .9rem;
+  border-radius: 3px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  padding: 7px 15px;
+  animation: alert 3s ease;
+  opacity: 0;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.alert i{
+  font-size: 15px;
+  border-radius: 100px;
+  padding: 2px;
+  margin-right: 10px;
+}
+
+.alert.success i{
+  color: #198819;
+  border: 2px solid #1988193e;
+}
+
+.alert.success span{
+  color: #198819;
+}
+
+.alert.fail i{
+  color: #aa2222;
+  border: 2px solid #aa22223e;
+}
+
+.alert.fail span{
+  color: #aa2222;
+}
+
+/* KEYFRAMES */
+@keyframes alert{
+  0%{
+    transform: translateY(0) translateX(-50%);
+    opacity: 0;
+    z-index: -1;
+  }
+  10%{
+    transform: translateY(25px) translateX(-50%);
+    opacity: 1;
+    z-index: 3;
+  }
+  90%{
+    transform: translateY(25px) translateX(-50%);
+    opacity: 1;
+    z-index: 3;
+  }
+  100%{
+    transform: translateY(0) translateX(-50%);
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,73 @@
+version: '3'
+
+services:
+  database:
+    container_name: database
+    image: mysql:8.0
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    environment: 
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+    volumes:
+      - ./database-init:/docker-entrypoint-initdb.d/:rw
+    networks:
+      - rede-database      
+        
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    ports:
+        - "9085:80"
+    depends_on: 
+        - database
+    environment:
+        - PMA_ARBITRARY=1
+        - PMA_HOST="${PMA_HOST}"
+    networks:
+      - rede-database
+
+  app:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    container_name: app
+    working_dir: /var/www
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    environment: 
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      DATABASE_HOST: database:3306
+    volumes:
+      - ./www/:/var/www
+    networks: 
+      - rede-app
+      - rede-database
+
+  nginx:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.nginx
+    container_name: nginx
+    restart: unless-stopped
+    ports: 
+        - 9080:80
+    volumes:
+        - ./www/:/var/www
+    networks: 
+      - rede-app
+      - rede-database
+    depends_on: 
+        - app
+
+networks:
+  rede-app:
+      driver: bridge
+  rede-database:
+      driver: bridge
